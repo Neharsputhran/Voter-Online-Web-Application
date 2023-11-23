@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Voting System-Registration</title>
+    <link rel="stylesheet" href="../css/stylesheet2.css">
+</head>
+<body>
+    <!-- <img src="Canara-removebg-preview.png"> -->
+    <h1>Online Voting System</h1><hr>
+    
+    <form action="../api/register.php" method="post">
+        <h3>Registration</h3>
+        <input type="text" name="name" placeholder="Name">
+        <input type="number" name="mobile" placeholder="Mobile"><br><br>
+        <input type="password" name="password" placeholder="password">
+        <input type="password" name="comfirm" placeholder="Confirm password"><br><br>
+        <input type="text" name="usn" placeholder="USN"><br><br>
+        Upload image: <input type="file" name="photo"><br><br>
+        Select your role: <select name="role">
+            <option value="voter">Voter</option>
+            <option value="Candidate">Candidate</option>
+        </select><br><br>
+        <button>Register</button><br><br>
+        Already a user?<a href="index.html">Login here</a>
+
+        
+
+    </form>
+    
+</body>
+</html>
