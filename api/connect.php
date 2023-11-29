@@ -4,10 +4,12 @@ $USERNAME='root';
 $PASSWORD='';
 $DATABASE='onlinevoting';
 
-$con=mysqli_connect($HOSTNAME,$USERNAME,$PASSWORD,$DATABASE);
+$con = new mysqli($HOSTNAME,$USERNAME,$PASSWORD,$DATABASE);
 
-if(!$con)
-{
-    die(mysqli_error($con));
+// Create connection
+
+// Check connection
+if ($con->connect_error) {
+  die("Connection failed: " . $con->connect_error);
 }
 ?>

@@ -1,4 +1,48 @@
-body{
-    background-image: url("background.png");
+body {
+    height: 100vh;
+    background-color:  #2AAFB6;
+    /* background-image: linear-gradient(45deg, #0f0c29, #302b63, #24243e); */
+}
 
+#bodysection {
+    margin: 50px auto;
+    width: 700px;
+    height: 450px;
+    display: flex;
+    border-radius: 15px;
+    gap: 0px;
+    background-color: white;
+}
+.loginsection{
+
+    
+    display: flex;
+    width: 350px;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px;
+    text-align: center;
+   
+}
+h1 {
+    font-size: 40px;
+    text-align: center;
+    
+}
+
+input, button, select {
+    width: 200px;
+    height: 40px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 2px solid gainsboro;
+}
+button {
+    background-color: #0f0c29;
+    color: white;
+}
+img{
+border-top-right-radius: 15px;
+border-bottom-right-radius: 15px;
+width: 350px;
 }

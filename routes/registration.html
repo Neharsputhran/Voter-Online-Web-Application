@@ -6,24 +6,76 @@
     <title>Online Voting System-Registration</title>
     <link rel="stylesheet" href="../css/stylesheet2.css">
 </head>
+<style>
+        body{
+            height: 100vh;
+            background-color: #2AAFB6;
+            /* background-image: linear-gradient(45deg, #0f0c29, #302b63,#24243e); */
+        }
+        form{
+            margin: 40px auto;
+            width: 400px;
+            height: 550px;
+            display: flex;
+            border-radius: 15px;
+            align-items: center;
+            flex-direction: column;
+            padding: 15px;
+            text-align: center;
+            background-color: white;
+        }
+        button {
+            width: 250px;
+            background-color: #0f0c29;
+            height: 45px;
+            border-radius: 5px;
+            border: 1px solid gainsboro;
+            color: white;
+        }
+        input{
+            margin-bottom: 10px;
+            width: 250px;
+            height: 40px;
+            border-radius: 5px;
+            border: 1px solid gainsboro;
+
+        }
+        select{
+            width: 250px;
+            height: 40px;
+            border-radius: 5px;
+            border: 1px solid gainsboro;
+
+        }
+        
+        .pic{
+            height: 40px;
+        
+        }
+        h1{
+            text-align: center;
+            font-size: 40px;
+        }
+        
+</style>
 <body>
     <!-- <img src="Canara-removebg-preview.png"> -->
     <h1>Online Voting System</h1><hr>
     
     <form action="../api/register.php" method="post" enctype="multipart/form-data">
-        <h3>Registration</h3>
+        <h2>Registration</h2>
         <input type="text" name="name" placeholder="Name">
-        <input type="number" name="mobile" placeholder="Mobile"><br><br>
+        <input type="number" name="mobile" placeholder="Mobile">
         <input type="password" name="password" placeholder="password">
-        <input type="password" name="comfirm" placeholder="Confirm password"><br><br>
-        <input type="text" name="usn" placeholder="USN"><br><br>
-        Upload image: <input type="file" name="photo"><br><br>
+        <input type="password" name="confirm" placeholder="Confirm password">
+        <input type="text" name="usn" placeholder="USN">
+        Upload image:<input type="file" class="pic" name="photo">
         Select your role: <select name="role">
             <option value="voter">Voter</option>
-            <option value="Candidate">Candidate</option>
+            <option value="candidate">Candidate</option>
         </select><br><br>
         <button>Register</button><br><br>
-        Already a user?<a href="index.html">Login here</a>
+        Already a user?<a href="../index.html">Login here</a>
 
         
 

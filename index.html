@@ -5,24 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Voting System</title>
     <link rel="stylesheet" href="css/stylesheet.css">
+
 </head>
+
 <body>
     <div id="headersection">
-        <!-- <img src="CollegeLogo.png"  class="image"> -->
         <h1>Online Voting System</h1><hr>
     </div>
     <div id="bodysection">
-        <form action="">
-            <h3>Login</h3>
+        <div class="loginsection">
+        <form action="api/login.php" method="post">
+            <h2>Login</h2>
             <input type="text" name="usn" placeholder="Enter USN"><br><br>
             <input type="password" name="password" placeholder="Enter password"><br><br>
             <select id="dropbox" name="role">
-                <option value="1">Voter</option>
-                <option value="2">Candidate</option>
+                <option value="voter">Voter</option>
+                <option value="candidate">Candidate</option>
             </select><br><br>
             <button>Login</button><br><br>
-            New user?<a href="routes/registration.html">Register here</a>
-        </form>
-    </div>
-</body>
-</html>
+            New user? <a href="routes/registration.html">Register here</a>
+            </form>
+        </div>
+            <img src="background.png" >
+        
+
+            </div>
+            </body>
+            </html>
