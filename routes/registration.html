@@ -1,67 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Voting System-Registration</title>
-    <link rel="stylesheet" href="../css/stylesheet2.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <style>
-        body{
-            height: 100vh;
-            background-color: #2AAFB6;
-            /* background-image: linear-gradient(45deg, #0f0c29, #302b63,#24243e); */
-        }
-        form{
-            margin: 40px auto;
-            width: 400px;
-            height: 550px;
-            display: flex;
-            border-radius: 15px;
-            align-items: center;
-            flex-direction: column;
-            padding: 15px;
-            text-align: center;
-            background-color: white;
-        }
-        button {
-            width: 250px;
-            background-color: #0f0c29;
-            height: 45px;
-            border-radius: 5px;
-            border: 1px solid gainsboro;
-            color: white;
-        }
-        input{
-            margin-bottom: 10px;
-            width: 250px;
-            height: 40px;
-            border-radius: 5px;
-            border: 1px solid gainsboro;
+    * {
+        padding: 0;
+        margin: 0;
+    }
 
-        }
-        select{
-            width: 250px;
-            height: 40px;
-            border-radius: 5px;
-            border: 1px solid gainsboro;
+    body {
+        height: 100vh;
+        background-color: #2AAFB6;
+        /* background-image: linear-gradient(45deg, #0f0c29, #302b63,#24243e); */
+    }
 
-        }
-        
-        .pic{
-            height: 40px;
-        
-        }
-        h1{
-            text-align: center;
-            font-size: 40px;
-        }
-        
+    nav {
+        padding: 10px;
+        text-align: center;
+        height: 100px;
+        background-color: #2AAFB6;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        font-size: 35px;
+    }
+
+    form {
+        margin: 20px auto;
+        width: 400px;
+        height: 550px;
+        display: flex;
+        border-radius: 15px;
+        align-items: center;
+        flex-direction: column;
+        padding: 15px;
+        text-align: center;
+        background-color: white;
+    }
+
+    button {
+        width: 250px;
+        background-color: #0f0c29;
+        height: 45px;
+        border-radius: 5px;
+        border: 1px solid gainsboro;
+        color: white;
+    }
+
+    input {
+        margin-bottom: 10px;
+        width: 250px;
+        height: 40px;
+        border-radius: 5px;
+        border: 1px solid gainsboro;
+
+    }
+
+    select {
+        width: 250px;
+        height: 40px;
+        border-radius: 5px;
+        border: 1px solid gainsboro;
+
+    }
+
+    .pic {
+        height: 40px;
+
+    }
 </style>
+
 <body>
     <!-- <img src="Canara-removebg-preview.png"> -->
-    <h1>Online Voting System</h1><hr>
-    
+    <nav>
+        <h1>Online Voting System</h1>
+    </nav>
+
+
     <form action="../api/register.php" method="post" enctype="multipart/form-data">
         <h2>Registration</h2>
         <input type="text" name="name" placeholder="Name">
@@ -75,11 +93,12 @@
             <option value="candidate">Candidate</option>
         </select><br><br>
         <button>Register</button><br><br>
-        Already a user?<a href="../index.html">Login here</a>
+        Already a user?<a href="../loginpage.html">Login here</a>
 
-        
+
 
     </form>
-    
+
 </body>
+
 </html>

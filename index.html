@@ -1,34 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Voting System</title>
-    <link rel="stylesheet" href="css/stylesheet.css">
+    <title>Home page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins&family=Raleway:ital,wght@1,300&family=Ubuntu:wght@700&family=Yanone+Kaffeesatz&display=swap"
+        rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300&display=swap" rel="stylesheet"> 
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
 
+        body {
+            background-color: #2AAFB6;
+        }
+
+        nav {
+            height: 100px;
+            background-color: #2AAFB6;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+        }
+
+        nav ul li {
+            list-style: none;
+            display: inline;
+            float: right;
+            background-color: deepskyblue;
+            border-radius: 5px;
+            padding: 10px;
+
+            margin-top: 30px;
+            margin-right: 50px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: black;
+
+        }
+
+        h1 {
+            font-size: 70px;
+            font-family: 'Comfortaa', sans-serif; margin-top: 70px;
+            margin-left: 40px;
+        }
+
+        h2 {
+            font-size: 30px;
+            font-family: 'Chakra Petch', sans-serif;            margin-top: 30px;
+            margin-left: 40px;
+        }
+
+        .full {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        img {
+            height: 600px;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="headersection">
-        <h1>Online Voting System</h1><hr>
-    </div>
-    <div id="bodysection">
-        <div class="loginsection">
-        <form action="api/login.php" method="post">
-            <h2>Login</h2>
-            <input type="text" name="usn" placeholder="Enter USN"><br><br>
-            <input type="password" name="password" placeholder="Enter password"><br><br>
-            <select id="dropbox" name="role">
-                <option value="voter">Voter</option>
-                <option value="candidate">Candidate</option>
-            </select><br><br>
-            <button>Login</button><br><br>
-            New user? <a href="routes/registration.html">Register here</a>
-            </form>
+    <nav>
+        <ul>
+            <li><a href="loginpage.html">Login</a></li>
+            <li><a href="routes/registration.html">Register</a></li>
+        </ul>
+    </nav>
+    <div class="full">
+        <div class="text">
+            <h1>Online Voting System</h1>
+            <h2>Cast your valuable votes</h2>
         </div>
-            <img src="background.png" >
-        
 
-            </div>
-            </body>
-            </html>
+        <img src="13091-removebg-preview.png" alt="">
+    </div>
+
+
+</body>
+
+</html>

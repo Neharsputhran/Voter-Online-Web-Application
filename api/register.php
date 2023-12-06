@@ -37,7 +37,7 @@ if (mysqli_num_rows($check_existing_user) > 0) {
                 if($insert) {
                     echo '<script>
                             alert("Registration Successful");
-                            window.location= "../index.html";
+                            window.location= "../loginpage.html";
                           </script>';
                 } else {
                     echo '<script>

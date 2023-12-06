@@ -20,13 +20,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Voting System-Dashboard</title>
     <link rel="stylesheet" href="../css/stylesheet2.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
     <div class="mainsection">
         <div class="headersection">
         <a  href="../" style="float:left"><button class="back">Back</button> </a>
         <a  href="logout.php" style="float:right"><button class="logout"> Logout</button></a>
-        <h1>Online Voting System</h1><hr>
+        <h1>Online Voting System</h1>
 
         </div>
     
@@ -34,10 +35,10 @@
     <div id="profile">
 
         <center><img src="../uploads/<?php echo $userdata['photo']?>" height="150px" width="150px"></center>
-        <p><b>Name: </b><?php echo $userdata['name']?></p>
-        <p><b>Mobile: </b><?php echo $userdata['mobile']?></p>
-        <p><b>USN:</b> <?php echo $userdata['usn']?></p>
-        <p><b>Status: </b><?php echo $status?>
+        <br><br><p><b>Name: </b><?php echo $userdata['name']?></p>
+        <br><p><b>Mobile: </b><?php echo $userdata['mobile']?></p>
+        <br><p><b>USN:</b> <?php echo $userdata['usn']?></p>
+        <br><p><b>Status: </b><?php echo $status?>
 </p>
 </div>
 <div id="candidate">
