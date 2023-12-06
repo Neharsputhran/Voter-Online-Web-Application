@@ -1,6 +1,6 @@
 <?php
 include_once 'connect.php';
-print_r($_POST);
+// print_r($_POST);
 
 
 $name = mysqli_real_escape_string($con, $_POST['name']);
@@ -16,10 +16,21 @@ $role = mysqli_real_escape_string($con, $_POST['role']);
 $check_existing_user = mysqli_query($con, "SELECT * FROM user WHERE usn='$usn'");
 if (mysqli_num_rows($check_existing_user) > 0) {
     // User with the same USN already exists
-    echo '<script>
-            alert("User with the same USN already exists");
-            window.location.href = "../routes/registration.html";
-          </script>';
+    ?>
+                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            Swal.fire({
+                                title: "Oh no!",
+                                text: "User with same USN already exist",
+                                icon: "error",
+                                confirmButtonText: "OK"
+                            }).then(function() {
+                                window.location.href = "../routes/registration.html";
+                            });
+                        });
+                    </script>
+                    <?php
 } else {
     // User does not exist, proceed with registration
     if ($password == $confirm) {
@@ -35,35 +46,92 @@ if (mysqli_num_rows($check_existing_user) > 0) {
 
 
                 if($insert) {
-                    echo '<script>
-                            alert("Registration Successful");
-                            window.location= "../loginpage.html";
-                          </script>';
+                    ?>
+                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            Swal.fire({
+                                title: "Success!",
+                                text: "Registration successful",
+                                icon: "success",
+                                confirmButtonText: "OK"
+                            }).then(function() {
+                                window.location.href = "../loginpage.html";
+                            });
+                        });
+                    </script>
+                    <?php
+
                 } else {
-                    echo '<script>
-                            alert("Error: ' . mysqli_error($con) . '");
-                            window.location.href = "../routes/registration.html";
-                          </script>';
+                    ?>
+                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            Swal.fire({
+                                title: "Error: ' . mysqli_error($con) . '",
+                             
+                                icon: "error",
+                                confirmButtonText: "OK"
+                            }).then(function() {
+                                window.location.href = "../routes/registration.html";
+                            });
+                        });
+                    </script>
+                    <?php
                 }
             } else {
-                echo '<script>
-                        alert("Error moving uploaded file to destination");
-                        window.location.href = "../routes/registration.html";
-                      </script>';
+                ?>
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        Swal.fire({
+                            title: "Error moving uploaded file to destination",
+                        
+                            icon: "error",
+                            confirmButtonText: "OK"
+                        }).then(function() {
+                            window.location.href = "../routes/registration.html";
+                        });
+                    });
+                </script>
+                <?php
             }
         } else {
-            echo '<script>
-                    alert("Error uploading file: ' . $_FILES['photo']['error'] . '");
-                    window.location.href = "../routes/registration.html";
-                  </script>';
+            ?>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    Swal.fire({
+                        title: "Error uploading file: ' . $_FILES['photo']['error'] . '",
+                      
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    }).then(function() {
+                        window.location.href = "../routes/registration.html";
+                    });
+                });
+            </script>
+            <?php
             // Output additional debugging information if needed
             print_r($_FILES);
         }
     } else {
-        echo '<script>
-                alert("Password does not match with confirm password"); 
-                window.location.href = "../routes/registration.html";
-              </script>';
+        ?>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    Swal.fire({
+                        title: "Password does not match with confirm password",
+                      
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    }).then(function() {
+                        window.location.href = "../routes/registration.html";
+                    });
+                });
+            </script>
+            <?php
+    
     }
 }
 

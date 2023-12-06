@@ -35,14 +35,18 @@
             list-style: none;
             display: inline;
             float: right;
-            background-color: deepskyblue;
-            border-radius: 5px;
-            padding: 10px;
-
-            margin-top: 30px;
-            margin-right: 50px;
+           
         }
 
+        button{
+            border-radius: 5px;
+            margin-top: 30px;
+            margin-right: 50px;
+            background-color: deepskyblue;
+            padding: 10px;
+            width: 80px;
+            text-align: center;
+        }
         nav ul li a {
             text-decoration: none;
             color: black;
@@ -75,8 +79,8 @@
 <body>
     <nav>
         <ul>
-            <li><a href="loginpage.html">Login</a></li>
-            <li><a href="routes/registration.html">Register</a></li>
+            <li><button onclick="location.href='loginpage.html';">Login</button></li>
+            <li><button onclick="location.href='routes/registration.html';">Register</button></li>
         </ul>
     </nav>
     <div class="full">

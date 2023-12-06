@@ -6,18 +6,11 @@ include_once 'connect.php';
 @$password = $_POST['password'];
 @$role = $_POST['role'];
 
-// Debugging: Print input values
-echo "Input values: USN=$usn, Password=$password, Role=$role<br>";
-
 // Fetch the user record based on usn and role
 $sql = mysqli_query($con, "SELECT * FROM user WHERE usn='$usn' AND role='$role'");
 if ($sql) {
     if (mysqli_num_rows($sql)) {
         $userdata = mysqli_fetch_array($sql);
-
-        // Debugging: Print hashed password values
-        // echo "Stored hashed password: {$userdata['password']}<br>";
-        // echo "Hashed input password: " . password_hash($password, PASSWORD_DEFAULT) . "<br>";
 
         // Verify the input password against the stored hashed password
         if (password_verify(trim($password), trim($userdata['password']))) {
@@ -25,31 +18,71 @@ if ($sql) {
             $candidatesdata = mysqli_fetch_all($candidates, MYSQLI_ASSOC);
             $_SESSION['userdata'] = $userdata;
             $_SESSION['candidatesdata'] = $candidatesdata;
-
-            echo '<script>
-                    alert("Login successful");
-                    window.location.href = "../routes/dashboard.php";
-                  </script>';
+            ?>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    Swal.fire({
+                        title: "Success!",
+                        text: "Login successful",
+                        icon: "success",
+                        confirmButtonText: "OK"
+                    }).then(function() {
+                        window.location.href = "../routes/dashboard.php";
+                    });
+                });
+            </script>
+            <?php
         } else {
             // Incorrect password
-            echo '<script>
-                    alert("Invalid password"); 
-                    window.location.href = "../";
-                  </script>';
+            ?>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Invalid password",
+                        showConfirmButton: true
+                    }).then(function() {
+                        window.location.href = "../loginpage.html";
+                    });
+                });
+            </script>
+            <?php
         }
     } else {
         // No matching user found
-        echo '<script>
-                alert("No matching user found"); 
-                window.location.href = "../";
-              </script>';
+        ?>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    icon: "error",
+                    title: "No matching user found",
+                    showConfirmButton: true
+                }).then(function() {
+                    window.location.href = "../loginpage.html";
+                });
+            });
+        </script>
+        <?php
     }
 } else {
     // SQL query error
-    echo '<script>
-            alert("Error: ' . mysqli_error($con) . '"); 
-            window.location.href = "../";
-          </script>';
+    ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            Swal.fire({
+                icon: "error",
+                title: "Error: <?php echo mysqli_error($con); ?>",
+                showConfirmButton: true
+            }).then(function() {
+                window.location.href = "../";
+            });
+        });
+    </script>
+    <?php
 }
 
 mysqli_close($con);

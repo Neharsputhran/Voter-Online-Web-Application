@@ -29,16 +29,38 @@ if ($result_votes && $result_status) {
     $_SESSION['candidatesdata'] = $candidatesdata;
 
     // Redirect with a success message
-    echo '<script>
-          alert("Voting Successful");
-          window.location= "../routes/dashboard.php";
-          </script>';
+    ?>
+                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            Swal.fire({
+                                title: "Success!",
+                                text: "Voted successful",
+                                icon: "success",
+                                confirmButtonText: "OK"
+                            }).then(function() {
+                                window.location.href = "../routes/dashboard.php";
+                            });
+                        });
+                    </script>
+                    <?php
 } else {
     // Handle the case where the update fails
-    echo '<script>
-          alert("Some error occurred");
-          window.location= "../routes/dashboard.php";
-          </script>';
+    ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            Swal.fire({
+                title: "Some error occured!",
+             
+                icon: "error",
+                confirmButtonText: "OK"
+            }).then(function() {
+                window.location.href = "../routes/dashboard.php";
+            });
+        });
+    </script>
+    <?php
 }
 
 // Close the prepared statements and database connection
