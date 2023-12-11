@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Voting System</title>
     <link rel="stylesheet" href="css/stylesheet.css">
+    <link rel="icon" type="image/png" href="./Online_voting_logo.png"/>
+
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </head>
@@ -17,8 +19,8 @@
         <div class="loginsection">
         <form action="api/login.php" method="post">
             <h2>Login</h2>
-            <input type="text" name="usn" placeholder="Enter USN"><br><br>
-            <input type="password" name="password" placeholder="Enter password"><br><br>
+            <input type="text" name="usn" placeholder="Enter USN" required><br><br>
+            <input type="password" name="password" placeholder="Enter password" required><br><br>
             <select id="dropbox" name="role">
                 <option value="voter">Voter</option>
                 <option value="candidate">Candidate</option>
@@ -28,7 +30,7 @@
             New user? <a href="routes/registration.html">Register here</a>
             </form>
         </div>
-            <img src="background.png" >
+            <img class="pic" src="background.png" >
         
 
             </div>

@@ -1,11 +1,37 @@
 <?php
 session_start();
 include_once 'connect.php';
+function sanitizeInput($input) {
+    return mysqli_real_escape_string($GLOBALS['con'], trim($input));
+}
 
-@$usn = $_POST['usn'];
-@$password = $_POST['password'];
-@$role = $_POST['role'];
+@$usn = sanitizeInput($_POST['usn']);
+@$password = sanitizeInput($_POST['password']);
+@$role = sanitizeInput($_POST['role']);
 
+function showErrorAndRedirect($errorMessage) {
+    ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            Swal.fire({
+                title: "Error!",
+                text: "<?php echo $errorMessage; ?>",
+                icon: "error",
+                confirmButtonText: "OK"
+            }).then(function() {
+                window.location.href = "../loginpage.html";
+            });
+        });
+    </script>
+    <?php
+    exit(); // Stop further execution
+}
+
+
+if (!preg_match("/^\d[a-zA-Z]{2}\d{2}[a-zA-Z]{2}\d{3}$/", $usn)) {
+    showErrorAndRedirect("Enter proper usn.");
+}
 // Fetch the user record based on usn and role
 $sql = mysqli_query($con, "SELECT * FROM user WHERE usn='$usn' AND role='$role'");
 if ($sql) {

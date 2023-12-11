@@ -20,6 +20,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Voting System-Dashboard</title>
     <link rel="stylesheet" href="../css/stylesheet2.css">
+    <link rel="icon" type="image/png" href="../Online_voting_logo.png"/>
+
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
@@ -33,6 +35,7 @@
     
     <div class="lowersection">
     <div id="profile">
+        <center><h1>Profile</h1></center>
 
         <center><img src="../uploads/<?php echo $userdata['photo']?>" height="150px" width="150px"></center>
         <br><br><p><b>Name: </b><?php echo $userdata['name']?></p>
@@ -42,6 +45,8 @@
 </p>
 </div>
 <div id="candidate">
+<center><h1>Candidates List</h1></center>
+
 <?php
 if ($_SESSION['candidatesdata']) {
     for ($i = 0; $i < count($candidatesdata); $i++) {

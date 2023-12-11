@@ -2,35 +2,55 @@
 include_once 'connect.php';
 // print_r($_POST);
 
+function sanitizeInput($input) {
+    return mysqli_real_escape_string($GLOBALS['con'], trim($input));
+}
 
-$name = mysqli_real_escape_string($con, $_POST['name']);
-$mobile = mysqli_real_escape_string($con, $_POST['mobile']);
-$password = mysqli_real_escape_string($con, $_POST['password']);
-$confirm = mysqli_real_escape_string($con, $_POST['confirm']);
-$usn = mysqli_real_escape_string($con, $_POST['usn']);
-$image = $_FILES['photo']['name'];
-$temp_name = $_FILES['photo']['tmp_name'];
+// Function to display error message and redirect
+function showErrorAndRedirect($errorMessage) {
+    ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            Swal.fire({
+                title: "Error!",
+                text: "<?php echo $errorMessage; ?>",
+                icon: "error",
+                confirmButtonText: "OK"
+            }).then(function() {
+                window.location.href = "../routes/registration.html";
+            });
+        });
+    </script>
+    <?php
+    exit(); // Stop further execution
+}
+
+// Validate and sanitize input
+$name = sanitizeInput($_POST['name']);
+$mobile = sanitizeInput($_POST['mobile']);
+$password = sanitizeInput($_POST['password']);
+$confirm = sanitizeInput($_POST['confirm']);
+$usn = sanitizeInput($_POST['usn']);
+$role = sanitizeInput($_POST['role']);
 $role = mysqli_real_escape_string($con, $_POST['role']);
 
+
+if (!preg_match("/^[a-zA-Z]+$/", $name)) {
+    showErrorAndRedirect("Name should only contain alphabetic characters.");
+}
+
+if (!preg_match("/^[0-9]{10}$/", $mobile)) {
+    showErrorAndRedirect("Mobile should contain only 10 numeric digits.");
+}
+if (!preg_match("/^\d[a-zA-Z]{2}\d{2}[a-zA-Z]{2}\d{3}$/", $usn)) {
+    showErrorAndRedirect("Enter proper usn.");
+}
 // Check if the user with the same USN already exists
 $check_existing_user = mysqli_query($con, "SELECT * FROM user WHERE usn='$usn'");
 if (mysqli_num_rows($check_existing_user) > 0) {
     // User with the same USN already exists
-    ?>
-                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                    <script>
-                        document.addEventListener("DOMContentLoaded", function() {
-                            Swal.fire({
-                                title: "Oh no!",
-                                text: "User with same USN already exist",
-                                icon: "error",
-                                confirmButtonText: "OK"
-                            }).then(function() {
-                                window.location.href = "../routes/registration.html";
-                            });
-                        });
-                    </script>
-                    <?php
+    showErrorAndRedirect("User with the same USN already exists.");
 } else {
     // User does not exist, proceed with registration
     if ($password == $confirm) {
@@ -113,7 +133,7 @@ if (mysqli_num_rows($check_existing_user) > 0) {
             </script>
             <?php
             // Output additional debugging information if needed
-            print_r($_FILES);
+            // print_r($_FILES);
         }
     } else {
         ?>

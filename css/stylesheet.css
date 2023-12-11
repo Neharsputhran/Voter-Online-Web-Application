@@ -50,7 +50,7 @@ button {
     background-color: #0f0c29;
     color: white;
 }
-img{
+.pic{
 border-top-right-radius: 15px;
 border-bottom-right-radius: 15px;
 width: 350px;
@@ -58,4 +58,62 @@ width: 350px;
 .forgot{
     font-size: 15px;
     text-align: right;
+}
+@media(max-width:480px){
+    .loginsection{
+        justify-content: center;
+        align-items: center;
+        width: 300px;
+    }
+    #bodysection {
+        margin: 50px auto;
+        width: 300px;
+        height: 450px;
+        display: flex;
+        border-radius: 15px;
+        gap: 0px;
+        background-color: white;
+    }
+    input, button, select {
+        width: 200px;
+        height: 40px;
+        margin: 10px;
+        border-radius: 5px;
+        border: 2px solid gainsboro;
+    }
+    .pic{
+        display: none;
+
+     }
+     nav{
+            font-size: 25px;
+     }
+}
+@media(max-width:700px){
+    .loginsection{
+        justify-content: center;
+        align-items: center;
+        width: 300px;
+    }
+    #bodysection {
+        margin: 50px auto;
+        width: 300px;
+        height: 450px;
+        display: flex;
+        border-radius: 15px;
+        gap: 0px;
+        background-color: white;
+    }
+    input, button, select {
+        width: 200px;
+        height: 40px;
+        margin: 10px;
+        border-radius: 5px;
+        border: 2px solid gainsboro;
+    }
+    .pic{
+        display: none;
+
+     }
+
 }

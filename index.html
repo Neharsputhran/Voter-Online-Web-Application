@@ -7,6 +7,7 @@
     <title>Home page</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href="./Online_voting_logo.png"/>
     <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins&family=Raleway:ital,wght@1,300&family=Ubuntu:wght@700&family=Yanone+Kaffeesatz&display=swap"
         rel="stylesheet">
@@ -70,8 +71,46 @@
             justify-content: space-between;
         }
 
-        img {
+        .homebg {
             height: 600px;
+        }
+        @media(max-width:890px){
+            .homebg{
+            height:350px;
+            width:fit-content;
+
+        }
+        }
+
+        @media(max-width:635px){
+           
+        .full {
+            display: inline;
+        } 
+        .homebg{
+            height:350px;
+            width:fit-content;
+            float: right;
+
+        }
+        h1 {
+            font-size: 60px;
+
+        }
+
+        h2 {
+            font-size: 20px;
+
+        }
+        button{
+            border-radius: 5px;
+            margin-top: 30px;
+            margin-right: 20px;
+            background-color: deepskyblue;
+            padding: 10px;
+            width: 80px;
+            text-align: center;
+        }
         }
     </style>
 </head>
@@ -89,7 +128,7 @@
             <h2>Cast your valuable votes</h2>
         </div>
 
-        <img src="13091-removebg-preview.png" alt="">
+        <img class="homebg" src="13091-removebg-preview.png" alt="">
     </div>
 
 
