@@ -36,7 +36,7 @@ $role = sanitizeInput($_POST['role']);
 $role = mysqli_real_escape_string($con, $_POST['role']);
 
 
-if (!preg_match("/^[a-zA-Z]+$/", $name)) {
+if (!preg_match("/^[a-zA-Z ]+$/", $name)) {
     showErrorAndRedirect("Name should only contain alphabetic characters.");
 }
 
@@ -55,11 +55,13 @@ if (mysqli_num_rows($check_existing_user) > 0) {
     // User does not exist, proceed with registration
     if ($password == $confirm) {
         if ($_FILES['photo']['error'] === UPLOAD_ERR_OK) {
+            $temp_name = $_FILES['photo']['tmp_name']; // Add this line to get the temporary file name
+            $image = $_FILES['photo']['name']; // Add this line to get the original file name        
             $destination = "../uploads/" . basename($image);
 
             if (move_uploaded_file($temp_name, $destination)) {
                 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-                echo "Hashed Password: $hashed_password, Confirm: $confirm";
+                // echo "Hashed Password: $hashed_password, Confirm: $confirm";
                 
 
           $insert = mysqli_query($con, "INSERT INTO user (name, mobile, password, usn, photo, role, status, votes) VALUES ('$name','$mobile','$hashed_password','$usn','$image','$role',0,0)");

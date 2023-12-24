@@ -54,7 +54,7 @@ if ($_SESSION['candidatesdata']) {
         <div class="each">
             <img style="float:right" src="../uploads/<?php echo $candidatesdata[$i]['photo'] ?>" height="100px" width="100px" >
             <br><b>Candidate name: </b><?php echo $candidatesdata[$i]['name'] ?><br><br>
-            <b>Votes: </b><?php echo $candidatesdata[$i]['votes'] ?><br>
+            <!-- <b>Votes: </b><?php echo $candidatesdata[$i]['votes'] ?><br> -->
             <form action="../api/vote.php" method="post">
                 <input type="hidden" name="gvotes" value="<?php echo $candidatesdata[$i]['votes'] ?>">
                 <input type="hidden" name="gid" value="<?php echo $candidatesdata[$i]['id'] ?>">

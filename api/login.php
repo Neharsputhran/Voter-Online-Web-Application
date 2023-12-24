@@ -44,22 +44,41 @@ if ($sql) {
             $candidatesdata = mysqli_fetch_all($candidates, MYSQLI_ASSOC);
             $_SESSION['userdata'] = $userdata;
             $_SESSION['candidatesdata'] = $candidatesdata;
-            ?>
-            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-            <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                    Swal.fire({
-                        title: "Success!",
-                        text: "Login successful",
-                        icon: "success",
-                        confirmButtonText: "OK"
-                    }).then(function() {
-                        window.location.href = "../routes/dashboard.php";
-                    });
-                });
-            </script>
-            <?php
-        } else {
+                        // Check if the user is an admin
+                        if ($role == 'admin') {
+                            ?>
+                            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function() {
+                                    Swal.fire({
+                                        title: "Success!",
+                                        text: "Login successful",
+                                        icon: "success",
+                                        confirmButtonText: "OK"
+                                    }).then(function() {
+                                        window.location.href = "../api/result.php"; // Redirect to the admin dashboard
+                                    });
+                                });
+                            </script>
+                            <?php
+                        } else {
+                            // For other roles (voter, candidate)
+                            ?>
+                            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function() {
+                                    Swal.fire({
+                                        title: "Success!",
+                                        text: "Login successful",
+                                        icon: "success",
+                                        confirmButtonText: "OK"
+                                    }).then(function() {
+                                        window.location.href = "../routes/dashboard.php"; // Redirect to the general dashboard
+                                    });
+                                });
+                            </script>
+                            <?php
+        }} else {
             // Incorrect password
             ?>
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
