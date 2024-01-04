@@ -34,6 +34,16 @@ $confirm = sanitizeInput($_POST['confirm']);
 $usn = sanitizeInput($_POST['usn']);
 $role = sanitizeInput($_POST['role']);
 $role = mysqli_real_escape_string($con, $_POST['role']);
+$position = '';
+$descript = sanitizeInput($_POST['descript']);
+
+if ($role == 'candidate' && isset($_POST['position'])) {
+    $position = sanitizeInput($_POST['position']);
+
+    if (empty($position)) {
+        showErrorAndRedirect("Please select a position.");
+    }
+}
 
 
 if (!preg_match("/^[a-zA-Z ]+$/", $name)) {
@@ -60,12 +70,13 @@ if (mysqli_num_rows($check_existing_user) > 0) {
             $destination = "../uploads/" . basename($image);
 
             if (move_uploaded_file($temp_name, $destination)) {
+                // ... (previous code)
+
                 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-                // echo "Hashed Password: $hashed_password, Confirm: $confirm";
-                
 
-          $insert = mysqli_query($con, "INSERT INTO user (name, mobile, password, usn, photo, role, status, votes) VALUES ('$name','$mobile','$hashed_password','$usn','$image','$role',0,0)");
+                $insert = mysqli_query($con, "INSERT INTO user (name, mobile, password, usn, photo, role, position, descript, status, votes, voted_positions_pre, voted_positions_vicepre, voted_positions_sec, voted_positions_jnsec) VALUES ('$name','$mobile','$hashed_password','$usn','$image','$role','$position','$descript',0,0,0,0,0,0)");
 
+                // ... (remaining code)
 
                 if($insert) {
                     ?>

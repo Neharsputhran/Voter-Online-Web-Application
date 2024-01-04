@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidate Registration</title>
+    <link rel="icon" type="image/png" href="../Online_voting_logo.png"/>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    body {
+        height: 100vh;
+        background-color: #2AAFB6;
+        /* background-image: linear-gradient(45deg, #0f0c29, #302b63,#24243e); */
+    }
+
+    nav {
+        padding: 10px;
+        text-align: center;
+        height: 100px;
+        background-color: #2AAFB6;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        font-size: 35px;
+    }
+
+    form {
+        margin: 20px auto;
+        width: 400px;
+        height: 550px;
+        display: flex;
+        border-radius: 15px;
+        align-items: center;
+        flex-direction: column;
+        padding: 15px;
+        text-align: center;
+        background-color: white;
+    }
+
+    button {
+        border: 20px;
+        width: 250px;
+        background-color: #0f0c29;
+        height: 45px;
+        border-radius: 5px;
+        border: 1px solid gainsboro;
+        color: white;
+    }
+
+    input {
+        margin-bottom: 20px;
+        width: 250px;
+        height: 40px;
+        border-radius: 5px;
+        border: 2px solid gainsboro;
+
+    }
+
+    select {
+        width: 250px;
+        height: 40px;
+        border-radius: 5px;
+        border: 2px solid gainsboro;
+
+    }
+
+    .pic {
+        height: 40px;
+
+    }
+    h2{
+        margin: 5px;
+    }
+    
+    @media (max-width:480px){
+        form {
+        width: 300px;
+    }
+    nav {
+      font-size: 25px;
+    }
+    }
+</style>
+
+<body>
+    <nav>
+        <h1>Online Voting System</h1>
+    </nav>
+
+    <form action="../api/register.php" method="post" enctype="multipart/form-data">
+        <h2>Registration</h2>
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="number" name="mobile" placeholder="Mobile" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="password" name="confirm" placeholder="Confirm Password" required>
+        <input type="text" name="usn" placeholder="USN" required>
+        Upload image: <input type="file" class="pic" name="photo" required>
+        Select your role:
+        <select name="role" onchange="showPositionDropdown()">
+            <option value="voter">Voter</option>
+            <option value="candidate">Candidate</option>
+        </select><br>
+        <div id="positionDropdown" style="display: none;">
+            Select your position:
+            <select name="position">
+                <option value="President">President</option>
+                <option value="Vice President">Vice President</option>
+                <option value="Secretary">Secretary</option>
+                <option value="Joint Secretary">Joint Secretary</option>
+            </select><br>
+        </div>
+        <button>Register</button><br>
+        Already a user?<a href="../loginpage.html">Login here</a>
+    </form>
+
+    <script>
+        function showPositionDropdown() {
+            var role = document.getElementsByName("role")[0].value;
+            var positionDropdown = document.getElementById("positionDropdown");
+
+            if (role === "candidate") {
+                positionDropdown.style.display = "block";
+            } else {
+                positionDropdown.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -32,15 +32,24 @@
 
     form {
         margin: 20px auto;
-        width: 400px;
-        height: 550px;
+        width: 600px;
+        height: fit-content;
         display: flex;
         border-radius: 15px;
         align-items: center;
-        flex-direction: column;
         padding: 15px;
+        flex-direction: column;
         text-align: center;
         background-color: white;
+    }
+    .tog{
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .together{
+        display:flex;
+        flex-direction: column;
     }
 
     button {
@@ -52,7 +61,8 @@
         border: 1px solid gainsboro;
         color: white;
     }
-
+    button:hover{
+box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;}
     input {
         margin-bottom: 20px;
         width: 250px;
@@ -69,7 +79,17 @@
         border: 2px solid gainsboro;
 
     }
+    #positionDropdown select{
+        margin-top: 23px;
+        width: 250px;
+        height: 40px;
+        border-radius: 5px;
+        border: 2px solid gainsboro;
 
+    }
+    textarea{
+        resize: vertical;
+    }
     .pic {
         height: 40px;
 
@@ -85,34 +105,82 @@
     nav {
       font-size: 25px;
     }
+    .tog{
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .together{
+        width: 100%;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    input,select{
+        margin: 10px auto;
+    }
     }
 </style>
 
 <body>
-    <!-- <img src="Canara-removebg-preview.png"> -->
     <nav>
         <h1>Online Voting System</h1>
     </nav>
 
-
     <form action="../api/register.php" method="post" enctype="multipart/form-data">
-        <h2>Registration</h2>
-        <input type="text" name="name" placeholder="Name" required>
-        <input type="number" name="mobile" placeholder="Mobile" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <input type="password" name="confirm" placeholder="Confirm Password" required>
-        <input type="text" name="usn" placeholder="USN" required>
-        Upload image: <input type="file" class="pic" name="photo" required>
-        Select your role:
-        <select name="role">
-            <option value="voter">Voter</option>
-            <option value="candidate">Candidate</option>
-            <option value="admin">Admin</option>
-        </select><br>
+        <h2>Registration</h2> <br><br>
+        <div class="tog">
+            <div class="together">
+                <input type="text" name="name" placeholder="Name" required> <br>
+            <input type="number" name="mobile" placeholder="Mobile" required> <br>
+            <input type="password" name="password" placeholder="Password" required> <br>
+            <input type="password" name="confirm" placeholder="Confirm Password" required> <br>
+            </div>
+            <div class="together">
+                <input type="text" name="usn" placeholder="USN" required>
+            Upload image: <input type="file" class="pic" name="photo" required> 
+            Select your role:
+            <select name="role" onchange="showPositionDropdown()">
+                <option value="voter">Voter</option>
+                <option value="candidate">Candidate</option>
+            </select> 
+            <div id="positionDropdown" style="display: none;">
+            Select your position: <br>
+                <select name="position">
+                    <option value="President">President</option>
+                    <option value="Vice President">Vice President</option>
+                    <option value="Secretary">Secretary</option>
+                    <option value="Joint Secretary">Joint Secretary</option>
+                </select><br>
+            </div>
+            </div>
+        </div>
+        <div id="candidatedescription" style="display: none; ">
+            Give description: <br>
+            <textarea id="descript" name="descript" rows="2" cols="40" maxlength="200"></textarea>
+    
+        </div>
+       
+        
         <button>Register</button><br>
         Already a user?<a href="../loginpage.html">Login here</a>
     </form>
 
+    <script>
+        function showPositionDropdown() {
+            var role = document.getElementsByName("role")[0].value;
+            var positionDropdown = document.getElementById("positionDropdown");
+
+            if (role === "candidate") {
+                positionDropdown.style.display = "block";
+                candidatedescription.style.display = "block";
+            } else {
+                positionDropdown.style.display = "none";
+                candidatedescription.style.display = "none";
+            }
+        }
+    </script>
 </body>
 
 </html>

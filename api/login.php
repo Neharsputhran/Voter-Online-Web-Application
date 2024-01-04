@@ -4,10 +4,10 @@ include_once 'connect.php';
 function sanitizeInput($input) {
     return mysqli_real_escape_string($GLOBALS['con'], trim($input));
 }
-
 @$usn = sanitizeInput($_POST['usn']);
 @$password = sanitizeInput($_POST['password']);
 @$role = sanitizeInput($_POST['role']);
+@$id = sanitizeInput($_POST['id']);
 
 function showErrorAndRedirect($errorMessage) {
     ?>
@@ -27,8 +27,6 @@ function showErrorAndRedirect($errorMessage) {
     <?php
     exit(); // Stop further execution
 }
-
-
 if (!preg_match("/^\d[a-zA-Z]{2}\d{2}[a-zA-Z]{2}\d{3}$/", $usn)) {
     showErrorAndRedirect("Enter proper usn.");
 }
@@ -62,8 +60,33 @@ if ($sql) {
                             </script>
                             <?php
                         } else {
-                            // For other roles (voter, candidate)
+                                    if (!isset($_SESSION['voted_positions'])) {
+                                        $_SESSION['voted_positions'] = array();
+                                    }
+                                    $voted_positions_data = array(); // Initialize the variable
+                                    if (!empty($usn)) {
+                                        $check_voted_positions = mysqli_prepare($con, "SELECT voted_positions_pre, voted_positions_vicepre, voted_positions_sec, voted_positions_jnsec FROM user WHERE usn = ?");
+                                        mysqli_stmt_bind_param($check_voted_positions, "s", $usn);
+                                        mysqli_stmt_execute($check_voted_positions);
+                                        $result = mysqli_stmt_get_result($check_voted_positions);
+                                        $voted_positions_data = mysqli_fetch_assoc($result);
+                                        mysqli_stmt_close($check_voted_positions);
+                                    } else {
+                                        showErrorAndRedirect("Invalid USN");
+                                    }
+                                    
+                                    // Set status based on fetched voted positions
+                                    if ($voted_positions_data['voted_positions_pre'] == 1 &&
+                                        $voted_positions_data['voted_positions_vicepre'] == 1 &&
+                                        $voted_positions_data['voted_positions_sec'] == 1 &&
+                                        $voted_positions_data['voted_positions_jnsec'] == 1) {
+                                        $_SESSION['userdata']['status'] = 1;
+                                    } else {
+                                        $_SESSION['userdata']['status'] = 0;
+                                    }
+
                             ?>
+
                             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                             <script>
                                 document.addEventListener("DOMContentLoaded", function() {
@@ -78,7 +101,8 @@ if ($sql) {
                                 });
                             </script>
                             <?php
-        }} else {
+                       }
+            } else {
             // Incorrect password
             ?>
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -129,6 +153,5 @@ if ($sql) {
     </script>
     <?php
 }
-
 mysqli_close($con);
 ?>
