@@ -11,6 +11,9 @@ foreach ($candidatesdata as $candidate) {
     $position = $candidate['position'];
     $groupedCandidates[$position][] = $candidate;
 }
+
+$desiredOrder = ['President', 'Vice President', 'Secretary', 'Joint Secretary'];
+
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +23,7 @@ foreach ($candidatesdata as $candidate) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Voting System</title>
     <link rel="stylesheet" href="../css/result.css">
-    <link rel="icon" type="image/png" href="../Online_voting_logo.png"/>
+    <link rel="icon" type="image/png" href="../logodone.jpeg"/>
 </head>
 <body>
     <div class="mainsection">
@@ -34,63 +37,63 @@ foreach ($candidatesdata as $candidate) {
         <div class="winnersection">
             
         <?php
-        foreach ($groupedCandidates as $position => $candidatesForPosition) {
-            ?>
-        <?php
-            if (!empty($candidatesForPosition)) {
-                $topCandidateForPosition = $candidatesForPosition[0]; // Assuming the first candidate has the highest vote
-                ?>
-                 <div class="topCandidateSection">
-                    <center><h2><?php echo $position; ?></h2></center>
-                    <?php
-                    echo "<div>";
-                    echo "<center><img  src='../uploads/" . $topCandidateForPosition['photo'] . "' alt='Top Candidate Photo' style='width: 150px; height: 150px;'></center>";
-                    echo "<center><p><b>Candidate Name:</b> " . $topCandidateForPosition['name'] . "</p></center>";
-                    echo "<div class='flex'>";
-                    echo "<p><b>USN:</b> " . $topCandidateForPosition['usn'] . "</p>";
-                    echo "<p><b>Votes:</b> " . $topCandidateForPosition['votes'] . "</p>";
-                    echo "</div>";
-                    echo "</div>";
+        // Iterate over the desired order
+        foreach ($desiredOrder as $position) {
+            if (isset($groupedCandidates[$position])) {
+                $candidatesForPosition = $groupedCandidates[$position];
+                if (!empty($candidatesForPosition)) {
+                    $topCandidateForPosition = $candidatesForPosition[0]; // Assuming the first candidate has the highest vote
                     ?>
-                </div>
-                <?php
+                     <div class="topCandidateSection">
+                        <center><h2><?php echo $position; ?></h2></center>
+                        <?php
+                        echo "<div>";
+                        echo "<center><img  src='../uploads/" . $topCandidateForPosition['photo'] . "' alt='Top Candidate Photo' style='width: 150px; height: 150px;'></center>";
+                        echo "<center><p style='font-size: 20px;'><b>Candidate Name:</b><br> " . $topCandidateForPosition['name'] . "</p></center>";
+                        echo "<div class='flex'>";
+                        echo "<p><b>USN:</b> " . $topCandidateForPosition['usn'] . "</p>";
+                        echo "<p><b>Votes:</b> " . $topCandidateForPosition['votes'] . "</p>";
+                        echo "</div>";
+                        echo "</div>";
+                        ?>
+                    </div>
+                    <?php
+                }
             }
-            ?>
-       <?php
         }
         ?>
         </div>
   
         <!-- Display tables for each position -->
         <?php
-
-        foreach ($groupedCandidates as $position => $candidatesForPosition) {
-            ?>
-            <div class="resultsection">
-                <h2><?php echo $position; ?>'s Votes</h2>
-                <table>
-                    <tr>
-                        <th>Candidate photo</th>
-                        <th>Candidate Name</th>
-                        <th>Candidate USN</th>
-                        <th>Votes</th>
-                    </tr>
-                    <?php
-                    foreach ($candidatesForPosition as $candidate) {
-                        echo "<tr>";
-                        echo "<td data-label='Candidate photo'><img src='../uploads/" . $candidate['photo'] . "' alt='Candidate Photo' style='width: 100px; height: 100px;'></td>";
-                        echo "<td data-label='Candidate Name'>" . $candidate['name'] . "</td>";
-                        echo "<td data-label='Candidate USN'>" . $candidate['usn'] . "</td>";
-                        echo "<td data-label='Votes'>" . $candidate['votes'] . "</td>";
-                        echo "</tr>";
-                    }
-                    ?>
-                </table>
-            </div>
-
-            <!-- Display the candidate with the highest vote for the current position -->
-           
-            <?php
+        // Iterate over the desired order
+        foreach ($desiredOrder as $position) {
+            if (isset($groupedCandidates[$position])) {
+                $candidatesForPosition = $groupedCandidates[$position];
+                ?>
+                <div class="resultsection">
+                    <h2><?php echo $position; ?></h2>
+                    <table>
+                        <tr>
+                            <th>Candidate photo</th>
+                            <th>Candidate Name</th>
+                            <th>Candidate USN</th>
+                            <th>Votes</th>
+                        </tr>
+                        <?php
+                        foreach ($candidatesForPosition as $candidate) {
+                            echo "<tr>";
+                            echo "<td data-label='Candidate photo'><img src='../uploads/" . $candidate['photo'] . "' alt='Candidate Photo' style='width: 100px; height: 100px;'></td>";
+                            echo "<td data-label='Candidate Name'>" . $candidate['name'] . "</td>";
+                            echo "<td data-label='Candidate USN'>" . $candidate['usn'] . "</td>";
+                            echo "<td data-label='Votes'>" . $candidate['votes'] . "</td>";
+                            echo "</tr>";
+                        }
+                        ?>
+                    </table>
+                </div>
+                <?php
+            }
         }
         ?>
     </div>

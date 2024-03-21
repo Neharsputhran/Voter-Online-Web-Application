@@ -1,11 +1,9 @@
 <?php
 include_once 'connect.php';
 // print_r($_POST);
-
 function sanitizeInput($input) {
     return mysqli_real_escape_string($GLOBALS['con'], trim($input));
 }
-
 // Function to display error message and redirect
 function showErrorAndRedirect($errorMessage) {
     ?>
@@ -25,10 +23,9 @@ function showErrorAndRedirect($errorMessage) {
     <?php
     exit(); // Stop further execution
 }
-
 // Validate and sanitize input
 $name = sanitizeInput($_POST['name']);
-$mobile = sanitizeInput($_POST['mobile']);
+$email = sanitizeInput($_POST['email']);
 $password = sanitizeInput($_POST['password']);
 $confirm = sanitizeInput($_POST['confirm']);
 $usn = sanitizeInput($_POST['usn']);
@@ -44,23 +41,29 @@ if ($role == 'candidate' && isset($_POST['position'])) {
         showErrorAndRedirect("Please select a position.");
     }
 }
-
-
 if (!preg_match("/^[a-zA-Z ]+$/", $name)) {
     showErrorAndRedirect("Name should only contain alphabetic characters.");
 }
-
-if (!preg_match("/^[0-9]{10}$/", $mobile)) {
-    showErrorAndRedirect("Mobile should contain only 10 numeric digits.");
+if (!preg_match("/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $email)) {
+    showErrorAndRedirect("Enter proper email");
 }
 if (!preg_match("/^\d[a-zA-Z]{2}\d{2}[a-zA-Z]{2}\d{3}$/", $usn)) {
     showErrorAndRedirect("Enter proper usn.");
 }
+if (preg_match('/[\x{1F600}-\x{1F64F}\x{1F300}-\x{1F5FF}\x{1F680}-\x{1F6FF}\x{1F700}-\x{1F77F}\x{1F780}-\x{1F7FF}\x{1F800}-\x{1F8FF}\x{1F900}-\x{1F9FF}\x{1FA00}-\x{1FA6F}\x{2600}-\x{26FF}\x{2700}-\x{27BF}\x{2B50}]/u', $descript)) {
+    showErrorAndRedirect("Emojis are not allowed in the description field.");
+}
+if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $password)) {
+    showErrorAndRedirect("Password must contain at least one capital letter, one small letter, one digit, and one special character. It should be at least 8 characters long.");
+}
 // Check if the user with the same USN already exists
 $check_existing_user = mysqli_query($con, "SELECT * FROM user WHERE usn='$usn'");
+$check_existing_email = mysqli_query($con, "SELECT * FROM user WHERE email='$email'");
 if (mysqli_num_rows($check_existing_user) > 0) {
     // User with the same USN already exists
     showErrorAndRedirect("User with the same USN already exists.");
+}else if(mysqli_num_rows($check_existing_email) > 0){
+    showErrorAndRedirect("User with the same email already exists.");
 } else {
     // User does not exist, proceed with registration
     if ($password == $confirm) {
@@ -74,7 +77,7 @@ if (mysqli_num_rows($check_existing_user) > 0) {
 
                 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-                $insert = mysqli_query($con, "INSERT INTO user (name, mobile, password, usn, photo, role, position, descript, status, votes, voted_positions_pre, voted_positions_vicepre, voted_positions_sec, voted_positions_jnsec) VALUES ('$name','$mobile','$hashed_password','$usn','$image','$role','$position','$descript',0,0,0,0,0,0)");
+                $insert = mysqli_query($con, "INSERT INTO user (name, email, password, usn, photo, role, position, descript, status, votes, voted_positions_pre, voted_positions_vicepre, voted_positions_sec, voted_positions_jnsec) VALUES ('$name','$email','$hashed_password','$usn','$image','$role','$position','$descript',0,0,0,0,0,0)");
 
                 // ... (remaining code)
 
@@ -164,9 +167,7 @@ if (mysqli_num_rows($check_existing_user) > 0) {
                 });
             </script>
             <?php
-    
     }
 }
-
 mysqli_close($con);
 ?>

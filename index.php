@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OnlineVotingSystem</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="icon" type="image/png" href="./Online_voting_logo.png"/>
+    <link rel="icon" type="image/png" href="./logodone.jpeg"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         
@@ -27,28 +26,26 @@
         }
 
         nav {
-            /* position: fixed; */
             height: 70px;
-
             padding: 20px;
-            background-color: #2AAFB6;
+            background-color: rgba(255, 255, 255, 0.5);        
             text-align: right;
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-
         }
-        nav ul li {
+        nav ul {
             list-style: none;
-            display: inline;
-            height: 50px;
-            /* float: right; */
-            border-radius: 5px;
-            margin-right: 50px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center; /* Add this line for vertical center alignment */
+        }
+
+        nav ul li {
+            margin-right: 20px;
             padding: 10px;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: bold;
             text-align: center;
-            font-weight:bold;
-           
         }
+
         nav ul li a {
             text-decoration: none;
             color: black;
@@ -65,6 +62,10 @@
             text-decoration: underline dashed;
             text-underline-offset: 5px;
         }
+        .logo{
+            float:left;
+            height: 80px;
+        }
         #openmenu{
             border-radius:50%;
             position: fixed;
@@ -73,6 +74,7 @@
             cursor:pointer;
             z-index: 100;
             display:none;
+
         }
         #full h2 {
 
@@ -98,11 +100,13 @@
             height: 600px;
         }
         .resimg{
-            height:200px;
-            width: 200px;
+            margin-top:120px;
+            height:250px;
+            width: 250px;
             display: none;
         }
-        #canddecs{
+        #canddesc{
+            
             min-height:100vh;
             padding: 20px;
         }
@@ -114,42 +118,43 @@
             display: flex;
             justify-content: center;
             gap: 30px;
-            flex-wrap: wrap; /* Add this line */
+            flex-wrap: wrap; 
         }
             .candidate-details {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             display: flex;
             flex-direction: column;
             padding: 20px;
-            width: 300px;
+            width: 250px;
             background-color: aliceblue;
             gap: 5px;
             font-size: 15px;
             text-align: left;
             border-radius: 5px;
             margin-bottom:10px;
-           
+            transition: transform 0.3s ease; 
+        }
+        .candidate-details:hover {
+            transform: scale(1.1); /* Scale up the size on hover */
+            z-index: 1; /* Bring to the front */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle box-shadow on hover */
         }
         .candidate-details p {
             white-space: normal;
             word-wrap: break-word;
         }
         .know{
-            font-size:40px;
-            font-family: 'Chakra Petch', sans-serif; 
+            font-size:50px;
+            font-family:"Lucida Console", "Courier New", monospace;
 
         }
-
         #contactsection{
             display: flex;
             align-items: center;
-            /* justify-content: center; */
+            background-color:#176B87;
             gap: 100px;
             padding:100px;
-            /* height:100vh; */
-            border-radius: 5px;
         }
-
         .contact-info {
             
             flex: 1;
@@ -226,6 +231,10 @@
             width:fit-content;
 
         }
+        nav ul {
+            flex-direction: column;
+            
+        }
         #contactsection{
             display: flex;
             align-items: center;
@@ -242,22 +251,31 @@
         #openmenu{
             display:block;
         }
+        .menubox ul {
+            list-style: none;
+            display: flex;
+            text-align:center;
+            flex-direction: column;
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+            height: 100%; /* Fill the entire height */
+        }
 
-        .menubox ul li{
+        .menubox ul li {
+            margin-right: 0px;
             width: 100%;
-           
-            /* font-weight:600; */
             position: relative;
             display: flex;
-            align-items:center;
-            justify-content:center;
-            overflow:hidden;
-            font-size:30px;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            font-size: 30px;
             text-shadow: 0 0 0 #2AAFB6;
         }
-        .menubox ul li:hover{
+
+        .menubox ul li:hover {
             text-shadow: -3px 3px 0 #2AAFB6;
-            transform:translateY(-6px);
+            transform: translateY(-6px);
         }
         .menubox{
             width:0;
@@ -302,7 +320,7 @@
         @media(max-width:480px){
             #canddesc h1{
 
-                font-size:30px
+                font-size:30px;
             }
             #canddecs{
                 padding: 30px;
@@ -313,10 +331,10 @@
             flex-direction:column;
             }
             #full h2 {
-                font-size: 40px;
+                font-size: 50px;
             }
             #full h3 {
-                font-size: 15px;
+                font-size: 25px;
             }
             .homebg{
                 display: none;
@@ -330,7 +348,7 @@
 </head>
 <body>
     <nav>
-          
+          <img class="logo" src="./logodone-removebg-preview.png" alt="">
             <i id="openmenu" class="fa-solid fa-bars"></i>
             
         <div class="menubox" id="menubox">
@@ -339,7 +357,7 @@
             
             <!-- <li><button onclick="location.href='loginpage.html';">Login</button></li>
             <li><button onclick="location.href='routes/registration.html';">Register</button></li> -->
-            <li><a href="routes/registration.html">Vote Here!</a></li>
+            <li><a href="routes/registration.html">Register Here!</a></li>
             <li><a href="#canddesc">Know your Candidate</a></li>
             <li><a href="#contactsection">Contact us</a></li>
         </ul>
@@ -358,20 +376,37 @@
         <br><br>
         <center><h1 class="know">Know your Candidate</h1></center>
         <?php
-        include_once './api/connect.php';
+include_once './api/connect.php';
 
-        // Fetch distinct positions from the database
-        $positionsResult = mysqli_query($con, "SELECT DISTINCT position FROM user WHERE role='candidate'");
-        $positions = mysqli_fetch_all($positionsResult, MYSQLI_ASSOC);
+// Fetch distinct positions from the database
+$positionsResult = mysqli_query($con, "SELECT DISTINCT position FROM user WHERE role='candidate'");
+$positions = mysqli_fetch_all($positionsResult, MYSQLI_ASSOC);
 
-        // Loop through each position
+// Define the desired order of positions
+$desiredOrder = ['President', 'Vice President', 'Secretary', 'Joint Secretary'];
+
+?>
+
+<!-- ... (your HTML and CSS code) ... -->
+
+
+    <?php
+    // Loop through each desired position
+    foreach ($desiredOrder as $position) {
+        // Check if the position exists in the fetched positions
+        $positionExists = false;
         foreach ($positions as $positionData) {
-            $position = $positionData['position'];
+            if ($positionData['position'] == $position) {
+                $positionExists = true;
+                break;
+            }
+        }
+
+        if ($positionExists) {
             ?>
             <br><br>
-            <h1><center><?php echo $position;?></center></h1><br>
+            <h1><center><?php echo $position; ?></center></h1><br>
             <div class="position-section">
-                
                 <?php
                 // Fetch candidates for the current position
                 $candidatesResult = mysqli_query($con, "SELECT * FROM user WHERE role='candidate' AND position='$position'");
@@ -392,8 +427,15 @@
             </div>
             <?php
         }
-        ?>
+    }
+    ?>
+</div>
+
+<!-- ... (remaining HTML and JavaScript) ... -->
+
     </div>
+
+
     <div id="contactsection">  
   <div class="contact-info">
     <!-- <img src="https://images.unsplash.com/photo-1552058574-d6f0a364fa1c?ixlib=rb-1.2.1&ixid=MnwxMjIzMTE5MHwxYWxlYXNmEER4Y2xlYWN0aWN5ZWxsaWN5LWFuZ3VsZ8&auto=format&fit=crop&w=750&q=80" alt="Modern office building with plants"> -->
@@ -438,7 +480,7 @@
         openmenu.style.display = "block";
         closemenu.style.display = "none";
     };
-
+    
     window.addEventListener("scroll", function () {
         // Get the current scroll position
         let scrollY = window.scrollY || window.pageYOffset;

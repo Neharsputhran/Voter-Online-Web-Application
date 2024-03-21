@@ -1,41 +1,49 @@
-*{
+* {
     padding: 0;
     margin: 0;
 }
-body{
+
+body {
     padding: 0;
     margin: 0;
 }
-.headersection{
+
+.headersection {
     padding: 10px;
     text-align: center;
     height: 100px;
-    background-color: #2AAFB6;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    background-color: rgba(255, 255, 255, 0.5);
     font-size: 30px;
 }
-.mainsection{
+
+.mainsection {
     min-height: 100vh;
     width: 100%;
-    background-color:  #2AAFB6;
+    background-color: #2AAFB6;
+    
 }
-#profile{
+
+#profile {
     height: fit-content;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     display: flex;
     flex-direction: column;
     padding: 20px;
     width: 30%;
+    margin-top: 20px;
     background-color: aliceblue;
     gap: 5px;
     font-size: 20px;
     text-align: left;
     border-radius: 5px;
 }
-.each{
-    border: 5px solid balck;
+
+.each {
+    border: 5px solid black;
 }
-.back,.logout{
+
+.back,
+.logout {
     margin: 20px;
     width: 70px;
     padding: 10px;
@@ -43,61 +51,54 @@ body{
     background-color: white;
     font-weight: 600;
     border: none;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    box-shadow: rgba(0, 0, 0, 0.25) 50px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
-img{
+
+img {
     margin-top: 30px;
     border-radius: 50%;
 }
-nav{
-    padding: 10px;
-    text-align: center;
-    height: 100px;
-    background-color: #2AAFB6;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-    font-size: 35px;
-}
-/* existing styles */
-#candidate{
+
+#candidate {
     display: flex;
     flex-direction: column;
     width: 40%;
-
 }
+
 .position-section {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    width: 90%;
-    height: fit-content;
     padding: 20px;
+    width: 90%;
     border-radius: 5px;
     background-color: aliceblue;
-    margin: 20px auto; /* add margin for centering */
+    margin: 20px auto; /* Center the position-section horizontally */
 }
 
-/* existing styles */
-
-.lowersection{
+.lowersection {
     padding: 20px;
-    display:flex;
+    display: flex;
     justify-content: space-between;
 }
-form{
+
+form {
     display: flex;
     flex-direction: column;
     padding: 10px;
-
 }
-input{
+
+input {
     margin-top: 10px;
 }
-.vote-button{
+
+.vote-button {
     border-radius: 5px;
     padding: 2px;
-    margin-top: 50px;
+    margin-top: 30px;
     width: 40px;
     background-color: rgb(107, 107, 207);
 }
-.voted-button{
+
+.voted-button {
     border-radius: 5px;
     padding: 5px;
     background-color: rgb(83, 131, 83);
@@ -106,56 +107,35 @@ input{
     height: 30px;
     color: white;
 }
-@media(max-width:770px){
 
-    .headersection{
+@media (max-width: 770px) {
+    .headersection {
         padding: 10px;
-        text-align: center;
-        height: 100px;
-        background-color: #2AAFB6;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
         font-size: 20px;
     }
-    #profile{
-        height: fit-content;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        display: flex;
-        flex-direction: column;
-        padding: 20px;
+    #profile {
         width: 40%;
-        background-color: aliceblue;
-        gap: 5px;
-        font-size: 20px;
-        text-align: left;
-        border-radius: 5px;
     }
-    #candidate{
+    #candidate {
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         padding: 20px;
         width: 40%;
         border-radius: 5px;
-
     }
 }
-@media(max-width:480px){
 
-    .headersection{
-        padding: 10px;
-        text-align: center;
-        height: 100px;
-        background-color: #2AAFB6;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+@media (max-width: 480px) {
+    .headersection {
         font-size: 15px;
     }
-    .lowersection{
+    .lowersection {
         padding: 20px;
         display: inline;
-        
     }
-    h1{
-       margin-bottom: 20px;
+    h1 {
+        margin-bottom: 20px;
     }
-    #profile{
+    #profile {
         height: fit-content;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         display: flex;
@@ -163,26 +143,26 @@ input{
         margin: 20px auto;
         padding: 20px;
         width: 60%;
-        background-color: aliceblue;
         gap: 5px;
         font-size: 20px;
         text-align: left;
         border-radius: 5px;
+        white-space: normal;
+        word-wrap: break-word;
+       
     }
-    #candidate{
+    #candidate {
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        padding: 20px;
-        width: 60%;
+        width: 75%;
         border-radius: 5px;
         margin: 20px auto;
-
     }
     .position-section {
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         padding: 20px;
-        width: 90%;
+        width: 80%;
         border-radius: 5px;
         margin: 20px auto;
         background-color: aliceblue;
-         }
+    }
 }

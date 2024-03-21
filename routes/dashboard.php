@@ -20,7 +20,7 @@ if ($_SESSION['userdata']['status'] == 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Voting System-Dashboard</title>
-    <link rel="icon" type="image/png" href="../Online_voting_logo.png" />
+    <link rel="icon" type="image/png" href="../logodone.jpeg"/>
     <link rel="stylesheet" href="../css/stylesheet2.css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
@@ -41,7 +41,7 @@ if ($_SESSION['userdata']['status'] == 0) {
                 <br><br>
                 <p><b>Name: </b><?php echo $userdata['name'] ?></p>
                 <br>
-                <p><b>Mobile: </b><?php echo $userdata['mobile'] ?></p>
+                <p><b>Email: </b><?php echo $userdata['email'] ?></p>
                 <br>
                 <p><b>USN:</b> <?php echo $userdata['usn'] ?></p>
                 <br>
