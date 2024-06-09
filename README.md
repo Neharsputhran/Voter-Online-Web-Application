@@ -8,8 +8,6 @@ Welcome to the Voter Online Web Application. This web application is designed to
 - [Setup Instructions](#setup-instructions)
 - [Usage](#usage)
 - [Folder Structure](#folder-structure)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 - User registration and authentication
