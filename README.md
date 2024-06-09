@@ -69,8 +69,7 @@ To set up the Voter Online Web Application on your local machine, follow these s
 ## Folder Structure
 - `css/`: Contains CSS files for styling the web pages.
 - `js/`: Contains JavaScript files for client-side scripting.
-- `php/`: Contains PHP files for server-side logic.
-- `database/`: Contains the SQL file for setting up the database.
+- `api/`: Contains PHP files for server-side logic.
 - `config.php`: Configuration file for database connection.
 
 
