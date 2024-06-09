@@ -70,7 +70,7 @@ To set up the Voter Online Web Application on your local machine, follow these s
 - `css/`: Contains CSS files for styling the web pages.
 - `js/`: Contains JavaScript files for client-side scripting.
 - `api/`: Contains PHP files for server-side logic.
-- `config.php`: Configuration file for database connection.
+- `connect.php`: Configuration file for database connection.
 
 
 ---
