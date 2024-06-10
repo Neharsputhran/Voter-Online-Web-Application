@@ -1,9 +1,9 @@
 # Voter Online Web Application
 
 Welcome to the Voter Online Web Application. This web application is designed to facilitate online voting. It is built using HTML, CSS, JavaScript, PHP, and MySQL, and it runs on the XAMPP server. Below is the detailed information on how to set up and use this application.
----
+-----
 ![Screenshot 2024-02-08 224356](https://github.com/Neharsputhran/Voter-Online-Web-Application/assets/109666034/48034a2f-6e0b-48cf-9043-4b1f7df59601)
----
+-----
 ## Table of Contents
 - [Features](#features)
 - [Technologies Used](#technologies-used)
