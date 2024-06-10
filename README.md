@@ -71,8 +71,8 @@ To set up the Voter Online Web Application on your local machine, follow these s
 - `js/`: Contains JavaScript files for client-side scripting.
 - `api/`: Contains PHP files for server-side logic.
 - `connect.php`: Configuration file for database connection.
-
-
+---
+![Screenshot 2024-02-08 224356](https://github.com/Neharsputhran/Voter-Online-Web-Application/assets/109666034/48034a2f-6e0b-48cf-9043-4b1f7df59601)
 ---
 
 Thank you for using the Voter Online Web Application! If you have any questions or need further assistance, please feel free to contact us.
