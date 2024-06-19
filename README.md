@@ -10,6 +10,7 @@ Welcome to the Voter Online Web Application. This web application is designed to
 - [Setup Instructions](#setup-instructions)
 - [Usage](#usage)
 - [Folder Structure](#folder-structure)
+- [License](#license)
 
 ## Features
 - User registration and authentication
@@ -73,5 +74,8 @@ To set up the Voter Online Web Application on your local machine, follow these s
 - `js/`: Contains JavaScript files for client-side scripting.
 - `api/`: Contains PHP files for server-side logic.
 - `connect.php`: Configuration file for database connection.
+---
+## License
+This project is licensed under the MIT License. See the LICENSE file for details.
 ---
 Thank you for using the Voter Online Web Application! If you have any questions or need further assistance, please feel free to contact us.
